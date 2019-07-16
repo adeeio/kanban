@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,30 +14,40 @@ body {
 
 .board {
   width: 100%;
-  max-width: 300px;
-  height: auto;
+  height: 100vh;
+  background-image: url("https://images.pexels.com/photos/667838/pexels-photo-667838.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   text-align: left;
-  background: #f5f5f5;
   border-radius: 6px;
   border: 2px solid #413939;
   box-shadow: inset 0px 1px 0px 0px #ffffff;
-  background: #413939;
   color: #f5f5f5;
   overflow: auto;
 }
 
 .board h2 {
   padding: 5px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
+  font-family: "Indie Flower", cursive;
+}
+
+.column-container {
+  display: flex;
+  width: 90%;
+  height: auto;
+  overflow-y: hidden;
 }
 
 .column {
-  border: 2px solid #9b2d71;
+  border: 2px solid rgba(155, 45, 113, 0.3);
   box-shadow: inset 0px 1px 0px 0px #ffffff;
   border-radius: 6px;
+  min-width: 200px;
+  max-width: 200px;
   margin: 5px;
   color: #f5f5f5;
   text-decoration: none;
-  background: #9b2d71;
+  background: rgba(155, 45, 113, 0.3);
   white-space: wrap;
 }
 
@@ -49,7 +60,7 @@ body {
 }
 
 .card {
-  border: 2px solid #889acc;
+  border: 2px solid rgba(248, 154, 31, 0.479);
   border-radius: 6px;
   margin: 5px;
   box-shadow: inset 0px 1px 0px 0px #ffffff;
@@ -58,31 +69,30 @@ body {
   text-decoration: none;
   box-shadow: inset 0px 1px 0px 0px #ffffff;
   color: #f5f5f5;
-  background: #889acc;
+  background: rgba(248, 154, 31, 0.479);
 }
 
 .card p {
   padding: 3px;
 }
 
-.add-card, .create-column, .btn-delete {
+.add-card, .create-column {
   border-radius: 6px;
-  border: 1px solid #dcdcdc;
-  display: inline-block;
+  border: 2px solid #f5f5f5;
   cursor: pointer;
-  color: #777777;
+  color: #f5f5f5;
+  background: inherit;
   font-family: Arial;
   font-weight: bold;
-  padding: 5px 14px;
+  padding: 5px;
   margin-top: 5px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #ffffff;
-  box-shadow: inset 0px 1px 0px 0px #ffffff;
 }
 
-.add-card:hover, .create-column:hover, .btn-delete:hover {
-  background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
-  background-color: #dfdfdf;
+.add-card:hover, .create-column:hover {
+  color: #7cdb69;
+  border-color: #7cdb69;
+  transition: .3s;
 }
 
 .create-column {
@@ -90,8 +100,24 @@ body {
 }
 
 .btn-delete {
+  border-radius: 50%;
+  border: 2px solid #f5f5f5;
+  cursor: pointer;
+  color: #f5f5f5;
+  background: inherit;
+  font-family: Arial;
+  font-weight: bold;
+  padding: 5px;
+  margin-top: 5px;
+  text-decoration: none;
   padding: 5px;
   margin: 0 0 0 3px;
+}
+
+.btn-delete:hover {
+  color: #cf2d2d;
+  border-color: #cf2d2d;
+  transition: .3s;
 }
 
 /*# sourceMappingURL=style.css.map */

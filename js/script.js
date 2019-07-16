@@ -77,13 +77,14 @@ document.addEventListener('DOMContentLoaded', function () {
         addColumn: function (column) {
             this.element.appendChild(column.element);
             initSortable(column.id);
+            console.log(column.id);
         },
         element: document.querySelector('#board .column-container')
     };
 
     function initSortable(id) {
         var el = document.getElementById(id);
-        var sortable = Sortable.create(el, {
+        var sortable = sortable.create(el, {
             group: 'kanban',
             sort: true
         });
@@ -95,24 +96,28 @@ document.addEventListener('DOMContentLoaded', function () {
         board.addColumn(column);
     });
 
-       // CREATING COLUMNS
-       var todoColumn = new Column('To do');
-       var doingColumn = new Column('Doing');
-       var doneColumn = new Column('Done');
-   
-       // ADDING COLUMNS TO THE BOARD
-       board.addColumn(todoColumn);
-       board.addColumn(doingColumn);
-       board.addColumn(doneColumn);
-   
-       // CREATING CARDS
-       var card1 = new Card('New task');
-       var card2 = new Card('Create kanban boards');
-   
-       // ADDING CARDS TO COLUMNS
-       todoColumn.addCard(card1);
-       doingColumn.addCard(card2);
-   
+    var siema = new Column('siema');
+    board.addColumn(siema);
+    var czesc = new Column('czesc');
+    board.addColumn(czesc);
+
+    // var todoColumn = new Column('To do');
+    // var doingColumn = new Column('doing');
+    // var doneColumn = new Column('Done');
+
+
+    // board.addColumn(todoColumn);
+    // board.addColumn(doingColumn);
+    // board.addColumn(doneColumn);
+
+
+    // var card1 = new Card('New task');
+    // var card2 = new Card('Create kanban boards');
+
+
+    // todoColumn.addCard(card1);
+    // doingColumn.addCard(card2);
+
 
 });
 
