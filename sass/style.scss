@@ -53,6 +53,7 @@ body {
   border-radius: 6px;
   min-width: 200px;
   max-width: 200px;
+  min-height: 300px;
   margin: 5px;
   color: $column-text-color;
   text-decoration: none;
@@ -77,6 +78,7 @@ body {
   box-shadow: inset 0px 1px 0px 0px #ffffff;
   color: $card-text-color;
   background: $card-main-color;
+  white-space: wrap;
   p {
     padding: 3px;
   }

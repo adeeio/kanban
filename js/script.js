@@ -1,6 +1,6 @@
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
 
     function randomString() {
         var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         this.id = randomString();
         this.name = name;
-        this.element = generateTemplate('column-template', { name: this.name });
+        this.element = generateTemplate('column-template', { name: this.name, id: this.id });
 
 
         this.element.querySelector('.column').addEventListener('click', function (event) {
@@ -73,21 +73,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     var board = {
-        name: "Kanban Board",
+        name: "Kanban",
         addColumn: function (column) {
             this.element.appendChild(column.element);
             initSortable(column.id);
-            console.log(column.id);
         },
         element: document.querySelector('#board .column-container')
     };
 
     function initSortable(id) {
         var el = document.getElementById(id);
-        var sortable = sortable.create(el, {
-            group: 'kanban',
-            sort: true
+        var el2 = document.querySelector(".column-container");
+        var sortable2 = Sortable.create(el2, {
+            group: 'share-column',
+            sort: true,
+            animation: 100
         });
+        var sortable = Sortable.create(el, {
+            group: 'share-card',
+            sort: true,
+            animation: 150
+        });
+        
     }
 
     document.querySelector('#board .create-column').addEventListener('click', function () {
@@ -96,28 +103,24 @@ document.addEventListener('DOMContentLoaded', function () {
         board.addColumn(column);
     });
 
-    var siema = new Column('siema');
-    board.addColumn(siema);
-    var czesc = new Column('czesc');
-    board.addColumn(czesc);
 
-    // var todoColumn = new Column('To do');
-    // var doingColumn = new Column('doing');
-    // var doneColumn = new Column('Done');
+    var todoColumn = new Column('To do');
+    var doingColumn = new Column('doing');
+    var doneColumn = new Column('Done');
 
 
-    // board.addColumn(todoColumn);
-    // board.addColumn(doingColumn);
-    // board.addColumn(doneColumn);
+
+    board.addColumn(todoColumn);
+    board.addColumn(doingColumn);
+    board.addColumn(doneColumn);
 
 
-    // var card1 = new Card('New task');
-    // var card2 = new Card('Create kanban boards');
+    var card1 = new Card('New task');
+    var card2 = new Card('Create kanban boards');
 
 
-    // todoColumn.addCard(card1);
-    // doingColumn.addCard(card2);
+    todoColumn.addCard(card1);
+    doingColumn.addCard(card2);
 
 
 });
-
