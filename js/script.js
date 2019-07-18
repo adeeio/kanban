@@ -35,10 +35,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             if (event.target.classList.contains('add-card')) {
-                self.addCard(new Card(prompt("Enter the name of the card")));
+                var checkContent = inputCheck(prompt("Enter the name of the card"));
+                console.log(checkContent);
+                if(checkContent){
+                self.addCard(new Card(checkContent));
+                }
+                return false;
+                
             }
         })
 
+    }
+
+    function inputCheck(input){
+        if(input == ""){
+            alert('Input can not be left blank');
+            return false;
+        }
+        return input;
     }
 
     Column.prototype = {

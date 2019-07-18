@@ -21,7 +21,7 @@ body {
   border: 2px solid #413939;
   box-shadow: inset 0px 1px 0px 0px #ffffff;
   color: #f5f5f5;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .board h2 {
@@ -33,9 +33,12 @@ body {
 
 .column-container {
   display: flex;
-  width: 90%;
+  width: auto;
   height: auto;
-  overflow-y: hidden;
+}
+
+.column-card-list {
+  min-height: 100px;
 }
 
 .column {
@@ -43,8 +46,6 @@ body {
   box-shadow: inset 0px 1px 0px 0px #ffffff;
   border-radius: 6px;
   min-width: 200px;
-  max-width: 200px;
-  min-height: 300px;
   margin: 5px;
   color: #f5f5f5;
   text-decoration: none;
@@ -94,7 +95,7 @@ body {
 .add-card:hover, .create-column:hover {
   color: #7cdb69;
   border-color: #7cdb69;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .create-column {
@@ -119,7 +120,14 @@ body {
 .btn-delete:hover {
   color: #cf2d2d;
   border-color: #cf2d2d;
-  transition: .3s;
+  transition: 0.3s;
+}
+
+@media (max-width: 680px) {
+  .column-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -31,7 +31,7 @@ body {
   border: 2px solid $board-main-color;
   box-shadow: inset 0px 1px 0px 0px #ffffff;
   color: $board-text-color;
-  overflow: auto;
+  overflow-y: auto;
   h2 {
     padding: 5px;
     text-align: center;
@@ -42,9 +42,12 @@ body {
 
 .column-container {
   display: flex;
-  width: 90%;
+  width: auto;
   height: auto;
-  overflow-y: hidden;
+}
+
+.column-card-list {
+  min-height: 100px;
 }
 
 .column {
@@ -52,8 +55,6 @@ body {
   box-shadow: inset 0px 1px 0px 0px #ffffff;
   border-radius: 6px;
   min-width: 200px;
-  max-width: 200px;
-  min-height: 300px;
   margin: 5px;
   color: $column-text-color;
   text-decoration: none;
@@ -98,7 +99,7 @@ body {
   &:hover {
     color: rgb(124, 219, 105);
     border-color: rgb(124, 219, 105);
-    transition: .3s;
+    transition: 0.3s;
   }
 }
 
@@ -121,8 +122,15 @@ body {
   &:hover {
     color: rgb(207, 45, 45);
     border-color: rgb(207, 45, 45);
-    transition: .3s;
+    transition: 0.3s;
   }
   padding: 5px;
   margin: 0 0 0 3px;
+}
+
+@media (max-width: 680px) {
+  .column-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
