@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (event.target.classList.contains('add-card')) {
                 var checkContent = inputCheck(prompt("Enter the name of the card"));
-                console.log(checkContent);
                 if(checkContent){
                 self.addCard(new Card(checkContent));
                 }
@@ -98,12 +97,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function initSortable(id) {
         var el = document.getElementById(id);
         var el2 = document.querySelector(".column-container");
-        var sortable2 = Sortable.create(el2, {
+        Sortable.create(el2, {
             group: 'share-column',
             sort: true,
             animation: 100
         });
-        var sortable = Sortable.create(el, {
+        Sortable.create(el, {
             group: 'share-card',
             sort: true,
             animation: 150
@@ -114,7 +113,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#board .create-column').addEventListener('click', function () {
         var name = prompt('Enter a column name');
         var column = new Column(name);
-        board.addColumn(column);
+        if(inputCheck(name)){
+            board.addColumn(column);
+        }
+        return false;
+        
     });
 
 
