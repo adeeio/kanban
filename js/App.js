@@ -1,11 +1,5 @@
-function randomString() {
-    var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';
-    var str = '';
-    for (var i = 0; i < 10; i++) {
-        str += chars[Math.floor(Math.random() * chars.length)];
-    }
-    return str;
-}
+'use strict';
+
 
 function generateTemplate(name, data, basicElement) {
     var template = document.getElementById(name).innerHTML;
@@ -25,20 +19,36 @@ function inputCheck(input){
     return input;
 }
 
-var todoColumn = new Column('To do');
-var doingColumn = new Column('doing');
-var doneColumn = new Column('Done');
+var prefix = "https://cors-anywhere.herokuapp.com/";
+var baseUrl = 'https://kodilla.com/pl/bootcamp-api';
+var myHeaders = {
+    'X-Client-Id': '4261',
+    'X-Auth-Token': 'efcc1087a099d1c93a91fbfb9497f9d3'
+};
+
+
+fetch(prefix + baseUrl + '/board', { headers: myHeaders})
+.then(function(resp) {
+    return resp.json();
+})
+.then(function(resp) {
+    setupColumns(resp.columns);
+});
+
+function setupColumns(colums) {
+    columns.forEach(function(column){
+        var col = new Column(column.id, column.name);
+        board.addColumn(col);
+        setupCards(col, column.cards);
+    });
+}
+
+function setupCards(col, cards) {
+    cards.forEach(function(card) {
+        var cardObj = new Card(card.id, card.name);
+        col.addCard(cardObj);
+    });
+}
 
 
 
-board.addColumn(todoColumn);
-board.addColumn(doingColumn);
-board.addColumn(doneColumn);
-
-
-var card1 = new Card('New task');
-var card2 = new Card('Create kanban boards');
-
-
-todoColumn.addCard(card1);
-doingColumn.addCard(card2);
