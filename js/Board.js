@@ -24,7 +24,7 @@ function initSortable(id) {
 }
 
 document.querySelector('#board .create-column').addEventListener('click', function () {
-    var name = prompt('Enter a column name');
+    var name = inputCheck(prompt('Enter a column name'));
     var data = new FormData();
 
     data.append('name', name);

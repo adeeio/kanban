@@ -13,10 +13,9 @@ function generateTemplate(name, data, basicElement) {
 
 function inputCheck(input){
     if(input == ""){
-        alert('Input can not be left blank');
-        return false;
+        return "No name given";
     }
-    return input;
+    else return input;
 }
 
 var prefix = "https://cors-anywhere.herokuapp.com/";
@@ -35,7 +34,7 @@ fetch(prefix + baseUrl + '/board', { headers: myHeaders})
     setupColumns(resp.columns);
 });
 
-function setupColumns(colums) {
+function setupColumns(columns) {
     columns.forEach(function(column){
         var col = new Column(column.id, column.name);
         board.addColumn(col);

@@ -3,7 +3,7 @@ function Column(id, name) {
     var self = this;
 
     this.id = id;
-    this.name = name || 'No name given';
+    this.name = name;
     this.element = generateTemplate('column-template', { name: this.name, id: this.id });
 
 
@@ -13,7 +13,8 @@ function Column(id, name) {
         }
 
         if (event.target.classList.contains('add-card')) {
-            var cardName = prompt("Enter the name of the card");
+            var cardName = inputCheck(prompt("Enter the name of the card"));
+            console.log(cardName);
             event.preventDefault();
 
             var data = new FormData();
@@ -28,11 +29,12 @@ function Column(id, name) {
                 .then(function (res) {
                     return res.json();
                 })
-                .then(function () {
-
+                .then(function (resp) {
+                    var card = new Card(resp.id, cardName);
+                    self.addCard(card);
                 });
 
-            self.addCard(new Card(cardName));
+
         }
     })
 
