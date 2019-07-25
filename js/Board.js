@@ -17,21 +17,37 @@ function initSortable(id) {
     });
 }
 
-// document.ondragstart = function(event) {  //porozmawiamty o tym na rozmowie
-//     var lol = event.target;
-//     console.log(lol);
-// }
+document.addEventListener('dragstart', foo);
 
-// document.ondrop = function(event) {
-//     var trol = event.target.parentNode.parentNode.id;
-//     console.log(trol);
-//     var trol = '';
-// }
+function foo() {
+    var cardId = event.target.id;
+    event.stopPropagation();
+    foo2(cardId);
+}
+
+document.addEventListener('ondrop', foo2);
+
+function foo2(fooCardId) {
+    var cardId = fooCardId;
+    var trol = event.target.parentNode.parentNode.id;
+ 
+    var data = new FormData();
+    data.append('id', cardId);
+    data.append('bootcamp_kanban_column_id', trol);
+    console.log(trol);
+    console.log(cardId);
+    fetch(prefix + baseUrl + '/card', {
+        method: 'PUT',
+        headers: myHeaders,
+        body: data
+    });
+
+}
 
 
 document.querySelector('#board .create-column').addEventListener('click', function () {
     var name = inputCheck(prompt('Enter a column name'));
-    if(!name){
+    if (!name) {
         return false;
     }
     var data = new FormData();

@@ -4,7 +4,7 @@ function Card(id, name) {
     this.id = id;
     this.name = name;
     this.element = generateTemplate('card-template', { description: this.name }, 'li');
-
+    this.element.setAttribute("id", this.id);
     this.element.querySelector('.card').addEventListener('click', function (event) {
         event.stopPropagation();
 

@@ -1,9 +1,9 @@
 'use strict';
 
 
-function generateTemplate(name, data, basicElement) {
+function generateTemplate(name, data, basicElement = 'div') {
     var template = document.getElementById(name).innerHTML;
-    var element = document.createElement(basicElement || 'div');
+    var element = document.createElement(basicElement);
 
     Mustache.parse(template);
     element.innerHTML = Mustache.render(template, data);
