@@ -12,10 +12,20 @@ function generateTemplate(name, data, basicElement) {
 }
 
 function inputCheck(input){
-    if(input == ""){
+    if(input === ""){
         return "No name given";
     }
-    else return input;
+    else if(input === null){
+       return false;
+    }
+    else 
+    return input;
+}
+
+function checkNull (input){
+    if(!input){
+        return false;
+    }
 }
 
 var prefix = "https://cors-anywhere.herokuapp.com/";
@@ -48,6 +58,7 @@ function setupCards(col, cards) {
         col.addCard(cardObj);
     });
 }
+
 
 
 

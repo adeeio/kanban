@@ -15,13 +15,25 @@ function initSortable(id) {
         sort: true,
         animation: 150
     });
-
-
 }
+
+// document.ondragstart = function(event) {  //porozmawiamty o tym na rozmowie
+//     var lol = event.target;
+//     console.log(lol);
+// }
+
+// document.ondrop = function(event) {
+//     var trol = event.target.parentNode.parentNode.id;
+//     console.log(trol);
+//     var trol = '';
+// }
+
 
 document.querySelector('#board .create-column').addEventListener('click', function () {
     var name = inputCheck(prompt('Enter a column name'));
-
+    if(!name){
+        return false;
+    }
     var data = new FormData();
     data.append('name', name);
 

@@ -14,7 +14,9 @@ function Column(id, name) {
 
         if (event.target.classList.contains('add-card')) {
             var cardName = inputCheck(prompt("Enter the name of the card"));
-            console.log(cardName);
+            if(!cardName){
+                return false;
+            }
             event.preventDefault();
 
             var data = new FormData();
