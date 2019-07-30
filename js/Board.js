@@ -17,33 +17,35 @@ function initSortable(id) {
     });
 }
 
-document.addEventListener('dragstart', foo);
+function moveKart() {
 
-function foo() {
-    var cardId = event.target.id;
-    event.stopPropagation();
-    foo2(cardId);
+    var cardId;
+
+    document.ondragstart = function foo() {
+        cardId = event.target.id;
+        event.stopPropagation();
+    }
+
+
+    document.ondrop = function foo2() {
+
+        var trol = event.target.parentNode.parentNode.id;
+
+        var data = new FormData();
+        data.append('id', cardId);
+        data.append('bootcamp_kanban_column_id', trol);
+        console.log(trol);
+        console.log(cardId);
+        fetch(prefix + baseUrl + '/card', {
+            method: 'PUT',
+            headers: myHeaders,
+            body: data
+        });
+
+    }
 }
 
-document.addEventListener('ondrop', foo2);
-
-function foo2(fooCardId) {
-    var cardId = fooCardId;
-    var trol = event.target.parentNode.parentNode.id;
- 
-    var data = new FormData();
-    data.append('id', cardId);
-    data.append('bootcamp_kanban_column_id', trol);
-    console.log(trol);
-    console.log(cardId);
-    fetch(prefix + baseUrl + '/card', {
-        method: 'PUT',
-        headers: myHeaders,
-        body: data
-    });
-
-}
-
+moveKart();
 
 document.querySelector('#board .create-column').addEventListener('click', function () {
     var name = inputCheck(prompt('Enter a column name'));
